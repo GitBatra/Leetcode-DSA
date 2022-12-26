@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n=nums.size();
+        int pos=0;
+        int des=0;
+        int jump=0;
+        
+        if(n==1)
+        {
+            return true;
+        }
+        else if(nums[0]==0)
+        {
+            return false;
+        }
+        else
+        {
+            for(int i=0;i<n-1;i++)
+            {
+                if(des==i && nums[i]==0)
+                {
+                    return false;
+                }
+                des=max(des,nums[i]+i);
+                if(pos==i)
+                {
+                    jump++;
+                    pos=des;
+                }
+            }
+            return true;
+        }
+        
+    }
+};
