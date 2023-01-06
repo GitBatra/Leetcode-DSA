@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int n = word.size();
+        bool all_upper = true, all_lower = true;
+        if(n == 0 || n==1)
+        {
+            return true;
+        }
+        for(int i=1;i<n;i++)
+        {
+            if(islower(word[i]))
+            {
+                all_upper = false;
+            }
+            if(isupper(word[i]))
+            {
+                all_lower = false;
+            }
+        }
+        return all_lower || (all_upper && isupper(word[0]));
+    }
+};
